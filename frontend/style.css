@@ -1,0 +1,9 @@
+#PatientForm {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12x;
+
+    max-width: 350px;
+}
