@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <title>Patient Register</title>
+    </head>
+    <body>
+    <form id="PatientForm">
+        <label for="firstName"> Vorname:</label>
+        <input id="firstName" name="firstName" type="text">
+
+        <label for="lastName">Nachname:</label>
+        <input id="lastName" name="lastName" type="text">
+
+        <label for="patientID">Patienten-ID:</label>
+        <input id="patientID" name="patientID" type="text">
+
+        <label for="gender">Geschlecht:</label>
+        <select id="gender" name="gender">
+            <option value="female">Weiblich</option>
+            <option value="male">Männlich</option>
+            <option value="other">Anders</option>
+            <option value="unknown">Unbekannt</option>
+        </select>
+
+        <label for="birthDate">Geburtsdatum:</label>
+        <input id="birthDate" name="birthDate" type="date">
+
+        <label for="managingClinic">Behandelne Klinik</label>
+        <input id="managingClinic" name="managingClinic" type="text">
+        <button type="submit">Patient registrieren</button>
+        </form>
+    </body>
+</html>
+
+{
+    "firstName" : "Max" ,
+    "lastName" : "Mustermann" ,
+    "patientID" : "P-1048",
+    "gender" : "female",
+    "birthDate" : "1995-04-15",
+    "managingClinic" : "UMM"
+}
