@@ -11,7 +11,7 @@ public class PatientController {
     private FhirService fhirService;
 
     @PostMapping
-    public String receivePatientData(@RequestBody String patientJson) {
+    public String receivePatientData(@RequestBody String patientJson) throws Exception{
         System.out.println("=== PATIENTENDATEN IM BACKEND EMPFANGEN ===");
         System.out.println(patientJson);
         String json = fhirService.jsonFHIR(patientJson);
