@@ -2,7 +2,9 @@ package com.med.backend;
 
 
 import org.springframework.web.bind.annotation.*;
-
+@RestController
+@RequestMapping("/api/patients")
+@CrossOrigin(origins="*")
 public class PatientController {
     @PostMapping
     public String receivePatientData(@RequestBody String patientJson) {

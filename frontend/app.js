@@ -11,6 +11,20 @@ patientForm.addEventListener('submit', function(event) {
     const patientJSON = JSON.stringify(dataObject, null, 2);
 
 
-    console.log(patientJSON);
+    fetch('http://localhost:8080/api/patients', {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: patientJSON
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log('Server-Antwort', data);
+        alert('Patient erfolgreich an das Backend übermittelt!');
+    })
+    .catch(error => {
+        console.error('Fehler beim Übertragen:', error);
+    });
 });
 
