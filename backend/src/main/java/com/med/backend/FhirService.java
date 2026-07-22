@@ -3,9 +3,14 @@ package com.med.backend;
 import org.springframework.stereotype.Service;
 import org.hl7.fhir.r4.model.Patient;
 import ca.uhn.fhir.context.FhirContext;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.UUID;
 import org.hl7.fhir.r4.model.HumanName;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
+import org.hl7.fhir.r4.model.Enumerations;
+import org.hl7.fhir.r4.model.Reference;
 @Service
 public class FhirService {
     public String jsonFHIR(String patientJson) throws Exception {
@@ -16,9 +21,34 @@ public class FhirService {
         String vorname = rootNode.get("firstName").asText();
         String nachname = rootNode.get("lastName").asText();
 
+        if (rootNode.has("patientID")) {
+            patient.setId(rootNode.get("patientID").asText());
+        } else {
+            patient.setId(UUID.randomUUID().toString());
+        }
+        if (rootNode.has("gender") && !rootNode.get("gender").asText().isEmpty()) {
+        String genderStr = rootNode.get("gender").asText().toLowerCase();
+        try {
+            patient.setGender(Enumerations.AdministrativeGender.fromCode(genderStr));
+        } catch (Exception e) {
+            patient.setGender(Enumerations.AdministrativeGender.UNKNOWN);
+        }
+        }
+        if(rootNode.has("birthDate") && !rootNode.get("birthDate").isEmpty()) {
+            String birthDateStr = rootNode.get("birthDate").asText();
+            Date birthDate = new SimpleDateFormat("yyyy-MM-dd").parse(birthDateStr);
+            patient.setBirthDate(birthDate);
+        }
+        if(rootNode.has("managingClinic") && !rootNode.get("managingClinic").isEmpty()) {
+            String managingClinic = rootNode.get("managingClinic").asText();
+            Reference orgRef = new Reference();
+            orgRef.setDisplay(managingClinic);
+            patient.setManagingOrganization(orgRef);
+        }
         HumanName name = patient.addName();
         name.addGiven(vorname);
         name.setFamily(nachname);
+
         return ctx.newJsonParser().setPrettyPrint(true).encodeResourceToString(patient);
     }
 }
