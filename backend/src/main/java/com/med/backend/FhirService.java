@@ -9,7 +9,6 @@ import java.util.UUID;
 import org.hl7.fhir.r4.model.HumanName;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
-
 import org.hl7.fhir.r4.model.Annotation;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Reference;
