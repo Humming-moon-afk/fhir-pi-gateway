@@ -3,18 +3,23 @@ package com.med.backend;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 public class PatientEntity {
     @Id
+    @JsonProperty("patientID")
     String ID;
     String firstName;
     String lastName;
     String gender;
     Date birthDate;
     String managingClinic;
+
+    @JsonProperty("Sonstiges")
     String sonstiges;
     public PatientEntity() {
-        
+
     }
     public String getID() {
         return ID;
