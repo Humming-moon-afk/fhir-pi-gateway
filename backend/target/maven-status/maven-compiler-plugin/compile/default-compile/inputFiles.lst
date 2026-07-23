@@ -1,3 +1,5 @@
 /Users/hummingmoon/fhir-pi-gateway/backend/src/main/java/com/med/backend/BackendApplication.java
 /Users/hummingmoon/fhir-pi-gateway/backend/src/main/java/com/med/backend/FhirService.java
 /Users/hummingmoon/fhir-pi-gateway/backend/src/main/java/com/med/backend/PatientController.java
+/Users/hummingmoon/fhir-pi-gateway/backend/src/main/java/com/med/backend/PatientEntity.java
+/Users/hummingmoon/fhir-pi-gateway/backend/src/main/java/com/med/backend/PatientRepository.java
