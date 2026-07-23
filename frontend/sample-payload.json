@@ -4,5 +4,6 @@
     "patientID" : "P-1048",
     "gender" : "female",
     "birthDate" : "1995-04-15",
-    "managingClinic" : "UMM"
+    "managingClinic" : "UMM" ,
+    "Sonstiges" : "Leukämie"
 }

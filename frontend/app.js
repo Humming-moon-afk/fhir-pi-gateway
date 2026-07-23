@@ -10,7 +10,7 @@ patientForm.addEventListener('submit', function(event) {
 
     const patientJSON = JSON.stringify(dataObject, null, 2);
 
-
+    
     fetch('http://localhost:8080/api/patients', {
         method: 'POST',
         headers: {
